@@ -22,5 +22,8 @@ int main(void) {
       abort();
     }
   }
+    float mc_pi(int){
+     return 3.14;
+}
 }
 
