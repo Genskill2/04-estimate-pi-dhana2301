@@ -3,27 +3,27 @@
 #include <stdio.h>
 #include <math.h>
 
-float wallis_pi(int);
 
-int main(void) {
-  float pi;
-  for (int i=0; i<5; i++) {
-    pi = wallis_pi(i);
-    if (!(fabs(pi - M_PI) > 0.15)) {
-      printf("Estimate with just %d iterations is %f which is too accurate.\n", i, pi);
-      abort();
-    }
-  }
 
-  for (int i=500; i<3000; i++) {
-    pi = wallis_pi(i);
-    if (!(fabs(pi - M_PI) < 0.01)) {
-      printf("Estimate with even %d iterations is %f which is not accurate enough.\n", i, pi);
-      abort();
-    }
-  }
-    float mc_pi(int){
-     return 3.14;
-}
-}
 
+def wallis(n):
+    prod = 1
+    for i in range(1,n+1):
+        a = (4*(i**2))/((4*(i**2)) - 1)
+        prod*=a
+    return(2*prod)
+
+from random import *
+def monte_carlo(n):
+    nod_circle = 0    
+    nod_square = 0    
+    for i in range(n):
+        x = random()
+        y = random()
+        if (x**2 + y**2)<=1:
+            nod_circle+=1
+            nod_square+=1
+        else:
+            nod_square+=1
+
+    return(4*nod_circle/nod_square)
